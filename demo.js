@@ -30,7 +30,7 @@ function onSingleClick(e) {
         .openOn(map);
 }
 
-map.on('click', onSingleClick);
+map.on('mousedown', onSingleClick);
 
 function onDoubleClick(e) {
     popup
@@ -39,7 +39,7 @@ function onDoubleClick(e) {
         .openOn(map);
 }
 
-map.on('dblclick', onDoubleClick);
+map.on('mouseup', onDoubleClick);
 
     // L.circle([77.6408, 12.9784], {
     //     color: 'red',
