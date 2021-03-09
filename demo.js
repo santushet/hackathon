@@ -26,20 +26,20 @@ $(function() {
 function onSingleClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("<b>Entered the accidental zone- Zone1 <br>Speed is reducing slowly</b>" )
+        .setContent("<b>Entered the accidental zone- Zone1 <br>Max speed set to 50km/hr</b>" )
         .openOn(map);
 }
 
-map.on('mousedown', onSingleClick);
+map.on('click', onSingleClick);
 
 function onDoubleClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("<b>Exit the accidental zone- Zone1</b>" )
+        .setContent("<b>Exit the accidental zone- Zone1<br>Max speed set to 80km/hr</b>" )
         .openOn(map);
 }
 
-map.on('mouseup', onDoubleClick);
+map.on('dblclick', onDoubleClick);
 
     // L.circle([77.6408, 12.9784], {
     //     color: 'red',
