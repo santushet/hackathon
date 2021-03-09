@@ -1,8 +1,11 @@
 $(function() {
     // Setup leaflet map
-    var map = new L.Map('map');
+    var map = new L.Map('map', {zoomControl:true});
 
-    var basemapLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    var basemapLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
+		maxZoom : 16
+    });
 
     // Center map and default zoom level
     map.setView([12.9784, 77.6408], 16);
@@ -20,14 +23,23 @@ $(function() {
 
     var popup = L.popup();
 
-function onMapClick(e) {
+function onSingleClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("Enter/Exit the accident potential zone " + e.latlng.toString())
+        .setContent("<b>Entered the accidental zone- Zone1 <br>Speed is reducing slowly</b>" )
         .openOn(map);
 }
 
-map.on('click', onMapClick);
+map.on('click', onSingleClick);
+
+function onDoubleClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("<b>Exit the accidental zone- Zone1</b>" )
+        .openOn(map);
+}
+
+map.on('dblclick', onDoubleClick);
 
     // L.circle([77.6408, 12.9784], {
     //     color: 'red',
